@@ -21,7 +21,11 @@ class SelectArea {
     }
 
     start(startX, startY) {
+        this.selected.forEach((value) => {
+            value.classList.remove("selected");
+        })
         this.selected = [];
+
         this.#instantiate();
         this.pos.x = startX;
         this.pos.y = startY;
@@ -84,10 +88,6 @@ class SelectArea {
     }
 
     end() {
-        /*this.selected.forEach((value) => {
-            value.classList.remove("selected");
-        })
-        this.selected = [];*/
         this.elem?.remove();
     }
 
@@ -167,6 +167,7 @@ const keyboardHandler = new KeyboardHandler($("body"));
 const selector = new SelectAreaHandler($(".select-area"));
 
 keyboardHandler.handle("delete", () => {
+    if (!confirm("Are you sure you want to delete selected objects?")) return;
     selector.selectedObjects.forEach((value) => {
         value.remove();
     });

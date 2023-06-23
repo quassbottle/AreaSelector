@@ -25,7 +25,7 @@ body {
     user-drag: none;
 }
 
-.test {
+.test1 {
     position: absolute;
     width: 75px;
     height: 75px;
@@ -34,6 +34,24 @@ body {
     left: 100px;
 }
 
-.test.selected {
+.test2 {
+    position: absolute;
+    width: 100px;
+    height: 75px;
+    background-color: green;
+    top: 300px;
+    left: 200px;
+}
+
+.test3 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
     background-color: blue;
+    top: 200px;
+    left: 400px;
+}
+
+.selected {
+    border: 2px solid black;
 }
