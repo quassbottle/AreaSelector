@@ -167,6 +167,7 @@ const keyboardHandler = new KeyboardHandler($("body"));
 const selector = new SelectAreaHandler($(".select-area"));
 
 keyboardHandler.handle("delete", () => {
+    if (selector.selectedObjects.length === 0) return;
     if (!confirm("Are you sure you want to delete selected objects?")) return;
     selector.selectedObjects.forEach((value) => {
         value.remove();
