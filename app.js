@@ -21,6 +21,7 @@ class SelectArea {
     }
 
     start(startX, startY) {
+        this.selected = [];
         this.#instantiate();
         this.pos.x = startX;
         this.pos.y = startY;
@@ -106,6 +107,7 @@ class SelectAreaHandler {
             this.isMouseDown = false;
             this.selector.end();
         })
+
         this.mouseDown = parent.on("mousedown", (event) => {
             this.isMouseDown = true;
             this.clickedPos = {
@@ -115,6 +117,7 @@ class SelectAreaHandler {
             this.selector.start(this.clickedPos.x, this.clickedPos.y);
             this.selector.move(event.pageX, event.pageY);
         })
+
         this.mouseMove = parent.on("mousemove", (event) => {
             if (this.isMouseDown) {
                 this.selector.move(event.pageX, event.pageY);
@@ -168,12 +171,3 @@ keyboardHandler.handle("delete", () => {
         value.remove();
     });
 })
-/*
-$(function(){
-    var press = jQuery.Event("keyup");
-    press.ctrlKey = false;
-    press.which = 46;
-    $('body').keyup(function(e){
-        alert(e.which);
-    }).trigger(press);
-});*/
